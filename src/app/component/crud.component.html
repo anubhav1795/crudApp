@@ -1,0 +1,58 @@
+<table border="1"
+       align="center"
+       cellpadding="10px"
+       cellspacing="10px"
+       style="font-size: 30px;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>COST</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of result">
+            <td>{{x.p_id}}</td>
+            <td>{{x.p_name}}</td>
+            <td>{{x.p_cost}}</td>
+            <td>
+                <button 
+                class="glyphicon glyphicon-edit"
+                (click)="updateRecord()"
+                style="margin-left: 20px;"></button>   
+            </td>
+            <td>
+                <button 
+                class="glyphicon glyphicon-trash"
+                        (click)="deleteRecord(x.p_id)"
+                        style="margin-left: 20px;"></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<fieldset>
+    <legend>Insert</legend>
+
+    <label style="margin-right: 130px;">P_ID:</label>
+    <input type="number" [(ngModel)]="pid">
+    
+    <br><br>
+    <label style="margin-right: 100px;">P_NAME:</label>
+    <input type="text" [(ngModel)]="pname">
+
+    <br><br>
+    <label style="margin-right: 100px;">P_COST:</label>
+    <input type="number" [(ngModel)]="pcost">
+
+    <br><br>
+    <button (click)="insertRecord({p_id:pid,
+                                   p_name:pname,
+                                   p_cost:pcost})">
+            Insert
+    </button>
+</fieldset>
